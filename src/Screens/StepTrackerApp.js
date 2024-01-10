@@ -7,7 +7,8 @@ import {
   Image,
   Pressable,
 } from "react-native";
-import { AsyncStorage } from "react-native";
+// import { AsyncStorage } from "react-native";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Accelerometer } from "expo-sensors";
 import { AntDesign, Feather, EvilIcons } from "@expo/vector-icons";
 // import { VictoryChart, VictoryLine } from 'victory-native';
@@ -83,7 +84,7 @@ function StepTrackerApp() {
   }
 
   return (
-    <View>
+    <View style={styles.container2}>
       <Text>Hello, {userName}!</Text>
       <Text>Step Count: {stepCount}</Text>
       {/* <VictoryChart>
@@ -95,6 +96,11 @@ function StepTrackerApp() {
 const styles = StyleSheet.create({
   container: {
     marginTop: 80,
+    marginLeft: 20
+  },
+  container2: {
+    marginTop: 80,
+    marginLeft: 50
   },
   welcome: {
     width: 250,
