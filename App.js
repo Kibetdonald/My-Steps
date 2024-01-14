@@ -1,11 +1,11 @@
  
 import {  View } from 'react-native';
-import StepTrackerApp from './src/Screens/StepTrackerApp';
+import Navigation from './Navigation'; 
 
 export default function App() {
   return ( 
-    <View>
-      <StepTrackerApp/>
+    <View style={{flex: 1}}>
+      <Navigation/>
     </View>
   );
 }
