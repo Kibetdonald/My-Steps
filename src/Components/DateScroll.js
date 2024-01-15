@@ -40,6 +40,8 @@ const DateScroll = () => {
 const styles = StyleSheet.create({
   scrollContainer: {
     alignItems: "center",
+    height: 60,
+    alignItems: "center",
     paddingVertical: 10,
   },
   dateContainer: {
@@ -47,6 +49,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     paddingHorizontal: 15,
     paddingVertical: 8,
+
     backgroundColor: "#ecf0f1",
     borderRadius: 10,
     marginHorizontal: 5,

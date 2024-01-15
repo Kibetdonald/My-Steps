@@ -7,14 +7,18 @@ import {
   Image,
   Pressable,
   ScrollView,
+  Dimensions,
 } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Pedometer } from "expo-sensors";
-import { AntDesign, Feather, EvilIcons } from "@expo/vector-icons";
+import { AntDesign, Foundation, EvilIcons } from "@expo/vector-icons";
 import CircularProgress from "react-native-circular-progress-indicator";
 import TopWrapper from "../Components/TopWrapper";
 import DateScroll from "../Components/DateScroll";
 import ActivityCharts from "../Components/ActivityCharts";
+import BottomNavigation from "../Components/BottomNavigation";
+
+const { width, height } = Dimensions.get("window");
 
 export default function HomeScreen() {
   const [isRegistered, setIsRegistered] = useState(false);
@@ -115,39 +119,51 @@ export default function HomeScreen() {
   }
 
   return (
-    <ScrollView>
+    <View style={{ flex: 1 }}>
       <TopWrapper />
       <DateScroll />
-      <View style={styles.container2}>
-        <Text style={styles.greeting}>
-          {greeting}, {userName}Donald
-        </Text>
-      </View>
-      <View style={{ alignItems: "center", marginTop: 20 }}>
-        <CircularProgress
-          // value={stepCount}
-          value={2800}
-          radius={100}
-          duration={2000}
-          progressValueColor={"#ecf0f1"}
-          maxValue={6000}
-          title={"Step Count"}
-          titleColor={"grey"}
-          titleStyle={{ fontWeight: "bold" }}
-        />
-      </View>
+      <ScrollView style={{ paddingHorizontal: 20 }}>
+        <View style={styles.container2}>
+          <Text style={styles.greeting}>
+            {greeting}, {userName}Donald
+          </Text>
+          <View style={styles.circlularview}>
+            <Text>DK</Text>
+          </View>
+        </View>
+        <View style={styles.stepView}>
+          <View style={styles.viewHeader}>
+            <Text>Walk</Text>
+            <Foundation name="foot" size={24} color="black" />
+          </View>
+          <View style={{ alignItems: "center", marginTop: 20 }}>
+            <CircularProgress
+              // value={stepCount}
+              value={2800}
+              radius={70}
+              duration={2000}
+              progressValueColor={"#ecf0f1"}
+              maxValue={6000}
+              title={"Step Count"}
+              titleColor={"grey"}
+              titleStyle={{ fontWeight: "bold" }}
+            />
+          </View>
+        </View>
 
-      <View>
         <View>
-          <Text>Cal Burnt</Text>
-          <Text>6000</Text>
+          <View>
+            <Text>Cal Burnt</Text>
+            <Text>6000</Text>
+          </View>
+          <View>
+            <Text>Highest Steps Count</Text>
+          </View>
         </View>
-        <View>
-          <Text>Highest Steps Count</Text>
-        </View>
-      </View>
-      <ActivityCharts />
-    </ScrollView>
+        <ActivityCharts />
+      </ScrollView>
+      <BottomNavigation />
+    </View>
   );
 }
 const styles = StyleSheet.create({
@@ -156,9 +172,33 @@ const styles = StyleSheet.create({
     marginLeft: 20,
   },
   container2: {
-    marginTop: 50,
+    marginTop: 10,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    paddingHorizontal: 20,
+  },
+  circlularview: {
+    borderWidth: 1,
+    borderColor: "#FF725E",
+    height: 30,
+    width: 30,
+    borderRadius: 30,
     justifyContent: "center",
+    alignContent: "center",
     alignItems: "center",
+  },
+  stepView: {
+    backgroundColor: "#FF725E",
+    height: width / 2,
+    width: width / 2,
+    borderRadius: 20,
+  },
+  viewHeader: {
+    justifyContent: "space-between",
+    width: width / 2,
+    flexDirection: "row",
+    paddingHorizontal: 25,
+    marginTop: 5,
   },
   welcome: {
     width: 250,
@@ -171,8 +211,8 @@ const styles = StyleSheet.create({
   greeting: {
     justifyContent: "center",
     alignItems: "center",
-    fontSize: 24,
-    fontWeight: "bold",
+    fontSize: 20,
+    fontWeight: "400",
   },
   input: {
     fontSize: 15,
