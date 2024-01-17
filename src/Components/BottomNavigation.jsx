@@ -6,12 +6,20 @@ import {
   SimpleLineIcons,
   FontAwesome,
 } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 
 export default function BottomNavigation() {
+  const navigation = useNavigation();
+  const homeNavigate = () => {
+    navigation.navigate("Home");
+  };
+  const activityNavigate = () => {
+    navigation.navigate("Activity");
+  };
   return (
     <View style={styles.container}>
-      <FontAwesome name="home" size={24} color="black" />
-      <SimpleLineIcons name="graph" size={24} color="black" />
+      <FontAwesome name="home" size={24} color="black" onPress={homeNavigate} />
+      <SimpleLineIcons name="graph" size={24} color="black" onPress={activityNavigate} />
       <Ionicons name="calendar" size={24} color="black" />
       <AntDesign name="user" size={24} color="black" />
     </View>

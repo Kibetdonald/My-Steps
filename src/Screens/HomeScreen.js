@@ -11,7 +11,14 @@ import {
 } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Pedometer } from "expo-sensors";
-import { AntDesign, Foundation, EvilIcons } from "@expo/vector-icons";
+import {
+  MaterialCommunityIcons,
+  Foundation,
+  EvilIcons,
+  Entypo,
+  AntDesign,
+  SimpleLineIcons,
+} from "@expo/vector-icons";
 import CircularProgress from "react-native-circular-progress-indicator";
 import TopWrapper from "../Components/TopWrapper";
 import DateScroll from "../Components/DateScroll";
@@ -122,45 +129,82 @@ export default function HomeScreen() {
     <View style={{ flex: 1 }}>
       <TopWrapper />
       <DateScroll />
-      <ScrollView style={{ paddingHorizontal: 20 }}>
+      <ScrollView style={{ paddingHorizontal: 20, backgroundColor: "#F5F5F5" }}>
         <View style={styles.container2}>
           <Text style={styles.greeting}>
-            {greeting}, {userName}Donald
+            {greeting}, {userName}
           </Text>
           <View style={styles.circlularview}>
             <Text>DK</Text>
           </View>
         </View>
-        <View style={styles.stepView}>
-          <View style={styles.viewHeader}>
-            <Text>Walk</Text>
-            <Foundation name="foot" size={24} color="black" />
+        {/* First Row */}
+        <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
+          <View style={styles.stepView1}>
+            <View style={styles.viewHeader}>
+              <Text>Walk</Text>
+              <Foundation name="foot" size={24} color="black" />
+            </View>
+            <View style={{ alignItems: "center", marginTop: 20 }}>
+              <CircularProgress
+                // value={stepCount}
+                value={2800}
+                radius={70}
+                duration={2000}
+                progressValueColor={"#ecf0f1"}
+                maxValue={6000}
+                title={"Step Count"}
+                titleColor={"grey"}
+                titleStyle={{ fontWeight: "bold" }}
+              />
+            </View>
           </View>
-          <View style={{ alignItems: "center", marginTop: 20 }}>
-            <CircularProgress
-              // value={stepCount}
-              value={2800}
-              radius={70}
-              duration={2000}
-              progressValueColor={"#ecf0f1"}
-              maxValue={6000}
-              title={"Step Count"}
-              titleColor={"grey"}
-              titleStyle={{ fontWeight: "bold" }}
-            />
+          <View style={styles.stepView2}>
+            <View style={styles.viewHeader}>
+              <Text>Sleep</Text>
+              <MaterialCommunityIcons
+                name="power-sleep"
+                size={24}
+                color="black"
+              />
+            </View>
+            <View style={{ alignItems: "center", marginTop: 20 }}>
+              <Text>05:43</Text>
+              <Text>Hours</Text>
+            </View>
+          </View>
+        </View>
+        {/* Second Row */}
+        <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
+          <View style={styles.stepView2}>
+            <View style={styles.viewHeader}>
+              <Text>Heart</Text>
+              <AntDesign name="hearto" size={24} color="black" />
+            </View>
+          </View>
+          <View style={styles.stepView2}>
+            <View style={styles.viewHeader}>
+              <Text>Water</Text>
+              <Entypo name="water" size={24} color="black" />
+            </View>
+            <View style={{ alignItems: "center", marginTop: 20 }}>
+              <Text>1.8 Litres</Text>
+            </View>
+          </View>
+        </View>
+        {/* Third Row */}
+        <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
+          <View style={styles.stepView2}>{/* Empty space */}</View>
+          <View style={styles.stepView2}>
+            <View style={styles.viewHeader}>
+              <Text>Calories</Text>
+              <SimpleLineIcons name="energy" size={20} color="black" />
+            </View>
+            <View style={{ alignItems: "center", marginTop: 20 }}></View>
           </View>
         </View>
 
-        <View>
-          <View>
-            <Text>Cal Burnt</Text>
-            <Text>6000</Text>
-          </View>
-          <View>
-            <Text>Highest Steps Count</Text>
-          </View>
-        </View>
-        <ActivityCharts />
+        {/* <ActivityCharts /> */}
       </ScrollView>
       <BottomNavigation />
     </View>
@@ -187,15 +231,28 @@ const styles = StyleSheet.create({
     alignContent: "center",
     alignItems: "center",
   },
-  stepView: {
-    backgroundColor: "#FF725E",
+  stepView1: {
     height: width / 2,
-    width: width / 2,
+    width: width / 2.6,
     borderRadius: 20,
+    marginTop: 20,
+    boxShadow: "10px 10px 17px -12px rgba(0,0,0,0.75)",
+    backgroundColor: "#FF725E",
+    borderBottomLeftRadius: 10,
+    borderBottomRightRadius: 10,
+  },
+  stepView2: {
+    height: width / 2,
+    width: width / 2.6,
+    borderRadius: 20,
+    marginTop: 20,
+    boxShadow: "10px 10px 17px -12px rgba(0,0,0,0.75)",
+    backgroundColor: "#fff",
+    borderBottomLeftRadius: 10,
+    borderBottomRightRadius: 10,
   },
   viewHeader: {
     justifyContent: "space-between",
-    width: width / 2,
     flexDirection: "row",
     paddingHorizontal: 25,
     marginTop: 5,
