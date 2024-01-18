@@ -3,7 +3,7 @@ import { View, Text, FlatList, StyleSheet } from "react-native";
 
 const DateScroll = () => {
   const currentDate = new Date();
-  const startIndex = 4;
+  const startIndex = 1;
 
   const dates = Array.from({ length: 10 }, (_, index) => {
     const offset = index - startIndex;
@@ -13,8 +13,9 @@ const DateScroll = () => {
   });
 
   const renderItem = ({ item }) => (
-    <View style={[styles.dateContainer, styles.activeDate]}>
-      <Text style={styles.dateText}>
+    <View style={[styles.dateContainer, item.getTime() === currentDate.getTime() && styles.activeDate]}>
+      <Text style={[styles.dateText, item.getTime() === currentDate.getTime() && styles.activeDate1]}>
+      
         {item.toLocaleDateString("en-US", {
           day: "numeric",
           month: "short",
@@ -49,13 +50,16 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     paddingHorizontal: 15,
     paddingVertical: 8,
-
     backgroundColor: "#ecf0f1",
     borderRadius: 10,
     marginHorizontal: 5,
   },
   activeDate: {
-    backgroundColor: "#ecf0f1",
+    backgroundColor: "#0492C2", 
+    color: "#fff"
+  },
+  activeDate1: { 
+    color: "#fff"
   },
   dateText: {
     fontSize: 16,

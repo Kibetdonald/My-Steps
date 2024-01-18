@@ -18,11 +18,11 @@ import {
   Entypo,
   AntDesign,
   SimpleLineIcons,
+  Fontisto 
 } from "@expo/vector-icons";
 import CircularProgress from "react-native-circular-progress-indicator";
 import TopWrapper from "../Components/TopWrapper";
-import DateScroll from "../Components/DateScroll";
-import ActivityCharts from "../Components/ActivityCharts";
+import DateScroll from "../Components/DateScroll"; 
 import BottomNavigation from "../Components/BottomNavigation";
 
 const { width, height } = Dimensions.get("window");
@@ -99,7 +99,7 @@ export default function HomeScreen() {
       <View style={styles.container}>
         <Image
           style={styles.welcome}
-          source={require("../../assets/welcome.png")}
+          source={require("../../assets/step.png")}
         />
         <View style={styles.centerText}>
           <Text style={styles.centerText}>Welcome to My-Step App</Text>
@@ -142,19 +142,19 @@ export default function HomeScreen() {
         <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
           <View style={styles.stepView1}>
             <View style={styles.viewHeader}>
-              <Text>Walk</Text>
-              <Foundation name="foot" size={24} color="black" />
+              <Text style={styles.viewText}>Walk</Text>
+              <Foundation name="foot" size={24} color="#F5F5F5" />
             </View>
             <View style={{ alignItems: "center", marginTop: 20 }}>
               <CircularProgress
                 // value={stepCount}
                 value={2800}
-                radius={70}
+                radius={50}
                 duration={2000}
                 progressValueColor={"#ecf0f1"}
                 maxValue={6000}
                 title={"Step Count"}
-                titleColor={"grey"}
+                titleColor={"#DDD"}
                 titleStyle={{ fontWeight: "bold" }}
               />
             </View>
@@ -168,9 +168,9 @@ export default function HomeScreen() {
                 color="black"
               />
             </View>
-            <View style={{ alignItems: "center", marginTop: 20 }}>
-              <Text>05:43</Text>
-              <Text>Hours</Text>
+            <View style={{ alignItems: "center", justifyContent: "center", paddingTop: "35%" }}>
+              <Text style={{fontWeight: "bold", fontSize: 26}}>05:43</Text>
+              <Text style={{color: "#DDD"}}>Hours</Text>
             </View>
           </View>
         </View>
@@ -181,26 +181,55 @@ export default function HomeScreen() {
               <Text>Heart</Text>
               <AntDesign name="hearto" size={24} color="black" />
             </View>
+            <View>
+            <Image
+           style={styles.heartImage}
+          source={require("../../assets/health.jpg")}
+        />
+        <View style={{marginTop: 20, marginLeft: 20}}>
+        <Text style={{fontWeight: "bold", fontSize: 24}}>104</Text>
+        <Text style={{color: "#333"}}>BPM</Text>
+        </View>
+            </View>
+
           </View>
           <View style={styles.stepView2}>
             <View style={styles.viewHeader}>
               <Text>Water</Text>
               <Entypo name="water" size={24} color="black" />
             </View>
+            <Image
+           style={styles.waterImage}
+          source={require("../../assets/water.jpg")}
+        />
             <View style={{ alignItems: "center", marginTop: 20 }}>
-              <Text>1.8 Litres</Text>
+            <Text style={{fontWeight: "bold", fontSize: 26}}>1.8</Text>
+              <Text style={{color: "#333"}}>Litres</Text>
             </View>
           </View>
         </View>
         {/* Third Row */}
         <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
-          <View style={styles.stepView2}>{/* Empty space */}</View>
+          <View style={styles.stepView2}>
+          <View style={styles.viewHeader}>
+              <Text>Best Record</Text>
+              <Fontisto name="fire" size={24} color="black" />
+            </View>
+            <View style={{ alignItems: "center", justifyContent: "center", paddingTop: "35%" }}>
+              <Text style={{fontWeight: "bold", fontSize: 26}}>8746 Steps</Text>
+              <Text style={{color: "#333"}}>14th Jan 2024</Text>
+            </View>
+            </View>
+
           <View style={styles.stepView2}>
             <View style={styles.viewHeader}>
               <Text>Calories</Text>
               <SimpleLineIcons name="energy" size={20} color="black" />
             </View>
-            <View style={{ alignItems: "center", marginTop: 20 }}></View>
+            <View style={{ alignItems: "center", justifyContent: "center", paddingTop: "35%" }}>
+              <Text style={{fontWeight: "bold", fontSize: 26}}>780</Text>
+              <Text style={{color: "#333"}}>Calories</Text>
+            </View>
           </View>
         </View>
 
@@ -223,7 +252,7 @@ const styles = StyleSheet.create({
   },
   circlularview: {
     borderWidth: 1,
-    borderColor: "#FF725E",
+    borderColor: "#0492C2",
     height: 30,
     width: 30,
     borderRadius: 30,
@@ -237,7 +266,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     marginTop: 20,
     boxShadow: "10px 10px 17px -12px rgba(0,0,0,0.75)",
-    backgroundColor: "#FF725E",
+    backgroundColor: "#0492C2",
     borderBottomLeftRadius: 10,
     borderBottomRightRadius: 10,
   },
@@ -256,6 +285,10 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     paddingHorizontal: 25,
     marginTop: 5,
+    paddingTop: 8
+  },
+  viewText:{
+     color: "#F5F5F5"
   },
   welcome: {
     width: 250,
@@ -265,6 +298,15 @@ const styles = StyleSheet.create({
     marginLeft: "25%",
     marginTop: "10%",
   },
+  heartImage:{
+   marginTop: 10
+  },
+  waterImage:{
+    marginTop: 20,
+    justifyContent: "center",
+    alignSelf: "center",
+    alignItems: "center"
+   },
   greeting: {
     justifyContent: "center",
     alignItems: "center",
@@ -308,7 +350,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
   btn: {
-    backgroundColor: "#FF725E",
+    backgroundColor: "#0492C2",
     padding: 15,
     width: "90%",
     alignItems: "center",

@@ -11,7 +11,8 @@ export default function TopWrapper() {
 
 const styles = StyleSheet.create({
   wrapper:{
-    backgroundColor: "#FF725E",
+    backgroundColor: "#0492C2",
+    color: "#F5F5F5",
     paddingTop: 30,
     textAlign: "center",
     paddingBottom: 12,
