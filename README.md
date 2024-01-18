@@ -14,3 +14,7 @@ Victory is a popular charting library for React Native. In this example, Victory
  **Step History Chart:** Visualize your step count history through an interactive line chart.
  
  **Persistent Data storage:** Utilizes AsyncStorage for storing user details status and step count data.
+
+## Screenshot
+
+<img src="https://github.com/Kibetdonald/My-Steps/assets/50916200/4a2a7c86-77c0-4436-aa30-3f741024fd97.jpg" width="93%" />
